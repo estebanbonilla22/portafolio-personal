@@ -1,0 +1,6 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Logotipo">
+  <rect width="64" height="64" fill="#131210"/>
+  <path d="M24 20 L14 32 L24 44" fill="none" stroke="#f5f0e6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M40 20 L50 32 L40 44" fill="none" stroke="#f5f0e6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="30" y1="46" x2="34" y2="18" stroke="#8a967f" stroke-width="3" stroke-linecap="round"/>
+</svg>

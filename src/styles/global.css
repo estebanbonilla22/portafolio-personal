@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+/*
+  Sistema de diseño del portafolio.
+  Paleta cálida (marfil / negro carbón) con un único acento discreto
+  (verde grisáceo). Editar aquí cambia el look completo del sitio.
+*/
+@theme {
+  --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --font-sans: "Instrument Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  --color-ink: #131210;
+  --color-ink-soft: #201e1a;
+  --color-paper: #f5f0e6;
+  --color-paper-dim: #ebe4d3;
+  --color-carbon: #47433a;
+  --color-line: #d9d1bd;
+  --color-line-dark: #37352e;
+  --color-accent: #6e7a63;
+  --color-accent-strong: #545e4b;
+  --color-on-ink: #f5f0e6;
+  --color-on-ink-muted: #a39c8a;
+
+  --breakpoint-xs: 26.25rem;
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  * {
+    @apply border-line;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-paper text-ink font-sans antialiased;
+    font-feature-settings: "ss01" 1, "kern" 1;
+  }
+
+  ::selection {
+    background-color: var(--color-accent);
+    color: var(--color-paper);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display font-normal tracking-tight;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  img, svg {
+    display: block;
+    max-width: 100%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer utilities {
+  .container-edit {
+    @apply mx-auto w-full max-w-[90rem] px-6 sm:px-10 lg:px-16;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Se activa vía JS (GSAP) sólo si el usuario no pide movimiento reducido */
+  .reveal {
+    opacity: 0;
+    transform: translateY(1.25rem);
+  }
+
+  .no-js .reveal,
+  .reduce-motion .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}

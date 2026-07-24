@@ -1,0 +1,124 @@
+---
+import { site } from "../data/site";
+
+const links = [
+  { label: "GitHub", href: site.contact.github },
+  { label: "LinkedIn", href: site.contact.linkedin },
+  { label: "WhatsApp", href: site.contact.whatsapp },
+];
+---
+
+<section id="contacto" class="contact">
+  <div class="container-edit">
+    <p class="section-kicker" data-reveal>Contacto</p>
+    <h2 class="contact-title" data-reveal>
+      ¿Tienes un proyecto en mente? Hablemos.
+    </h2>
+
+    <a href={`mailto:${site.contact.email}`} class="contact-email" data-reveal>
+      {site.contact.email}
+    </a>
+
+    <div class="contact-row" data-reveal>
+      <a href={`mailto:${site.contact.email}`} class="btn btn-dark">
+        Escríbeme <span aria-hidden="true">→</span>
+      </a>
+
+      <ul class="contact-links">
+        {
+          links.map((link) => (
+            <li>
+              <a href={link.href} target="_blank" rel="noopener noreferrer">
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact {
+    background-color: var(--color-paper);
+    padding-block: 6rem 7rem;
+  }
+
+  .section-kicker {
+    font-size: 0.8125rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-accent-strong);
+    margin-bottom: 1.25rem;
+  }
+
+  .contact-title {
+    font-size: clamp(2.25rem, 5.5vw, 4rem);
+    max-width: 20ch;
+    line-height: 1.08;
+  }
+
+  .contact-email {
+    display: inline-block;
+    margin-top: 2rem;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+    color: var(--color-accent-strong);
+    text-decoration: none;
+    border-bottom: 1px solid var(--color-line);
+    padding-bottom: 0.35rem;
+  }
+
+  .contact-email:hover {
+    border-color: var(--color-accent-strong);
+  }
+
+  .contact-row {
+    margin-top: 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2.5rem;
+  }
+
+  .btn-dark {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    text-decoration: none;
+    padding: 0.9rem 1.75rem;
+    background-color: var(--color-ink);
+    color: var(--color-paper);
+    border: 1px solid var(--color-ink);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .btn-dark:hover {
+    background-color: transparent;
+    color: var(--color-ink);
+  }
+
+  .contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    list-style: none;
+  }
+
+  .contact-links a {
+    font-size: 0.875rem;
+    color: var(--color-carbon);
+    text-decoration: none;
+    border-bottom: 1px solid var(--color-line);
+    padding-bottom: 0.15rem;
+    transition: color 0.25s ease, border-color 0.25s ease;
+  }
+
+  .contact-links a:hover {
+    color: var(--color-accent-strong);
+    border-color: var(--color-accent-strong);
+  }
+</style>

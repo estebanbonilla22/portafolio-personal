@@ -1,0 +1,219 @@
+---
+import type { Project } from "../data/projects";
+
+interface Props {
+  project: Project;
+  index: number;
+  reversed?: boolean;
+}
+
+const { project, index, reversed = false } = Astro.props;
+const num = String(index + 1).padStart(2, "0");
+const detailHref = `/proyectos/${project.slug}/`;
+const hasDemo = Boolean(project.links.demo);
+const hasCode = Boolean(project.links.code);
+---
+
+<article class:list={["feature", { reversed }]} data-reveal>
+  <a href={detailHref} class="feature-media">
+    <img
+      src={project.cover}
+      alt={`Vista principal del proyecto ${project.name}`}
+      loading="lazy"
+      decoding="async"
+      width="1200"
+      height="900"
+    />
+    <span class="feature-media-frame" aria-hidden="true"></span>
+  </a>
+
+  <div class="feature-copy">
+    <span class="feature-index">{num}</span>
+
+    <p class="feature-type">{project.type} — {project.year}</p>
+
+    <h3 class="feature-name">
+      <a href={detailHref}>{project.name}</a>
+    </h3>
+
+    <p class="feature-summary">{project.summary}</p>
+
+    <ul class="feature-tags">
+      {project.technologies.map((tech) => <li>{tech}</li>)}
+    </ul>
+
+    <div class="feature-actions">
+      <a href={detailHref} class="feature-link feature-link-primary">
+        Ver caso completo <span aria-hidden="true">→</span>
+      </a>
+      <a
+        href={hasDemo ? project.links.demo : undefined}
+        class="feature-link"
+        aria-disabled={!hasDemo}
+        target={hasDemo ? "_blank" : undefined}
+        rel={hasDemo ? "noopener noreferrer" : undefined}
+        title={hasDemo ? undefined : "Enlace disponible próximamente"}
+      >
+        Ver proyecto <span aria-hidden="true">↗</span>
+      </a>
+      <a
+        href={hasCode ? project.links.code : undefined}
+        class="feature-link"
+        aria-disabled={!hasCode}
+        target={hasCode ? "_blank" : undefined}
+        rel={hasCode ? "noopener noreferrer" : undefined}
+        title={hasCode ? undefined : "Enlace disponible próximamente"}
+      >
+        Ver código <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </div>
+</article>
+
+<style>
+  .feature {
+    display: grid;
+    gap: 2.5rem;
+    padding-block: 4rem;
+    border-top: 1px solid var(--color-line);
+  }
+
+  .feature:first-of-type {
+    border-top: none;
+  }
+
+  @media (min-width: 64rem) {
+    .feature {
+      grid-template-columns: 1.35fr 1fr;
+      gap: 4.5rem;
+      align-items: center;
+      padding-block: 6.5rem;
+    }
+
+    .feature.reversed {
+      grid-template-columns: 1fr 1.35fr;
+    }
+
+    .feature.reversed .feature-media {
+      order: 2;
+    }
+
+    .feature.reversed .feature-copy {
+      order: 1;
+    }
+  }
+
+  .feature-media {
+    position: relative;
+    display: block;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background-color: var(--color-paper-dim);
+  }
+
+  .feature-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .feature-media:hover img {
+    transform: scale(1.035);
+  }
+
+  .feature-media-frame {
+    position: absolute;
+    inset: 0;
+    border: 1px solid var(--color-line);
+    pointer-events: none;
+  }
+
+  .feature-index {
+    display: block;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--color-accent-strong);
+    margin-bottom: 1.25rem;
+  }
+
+  .feature-type {
+    font-size: 0.8125rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-carbon);
+    margin-bottom: 0.75rem;
+  }
+
+  .feature-name {
+    font-size: clamp(1.85rem, 3.4vw, 2.75rem);
+    line-height: 1.05;
+  }
+
+  .feature-name a {
+    text-decoration: none;
+    color: inherit;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    transition: background-size 0.4s ease;
+  }
+
+  .feature-name a:hover {
+    background-size: 100% 1px;
+  }
+
+  .feature-summary {
+    margin-top: 1.25rem;
+    max-width: 46ch;
+    color: var(--color-carbon);
+    line-height: 1.65;
+  }
+
+  .feature-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    list-style: none;
+    margin-top: 1.75rem;
+  }
+
+  .feature-tags li {
+    font-size: 0.75rem;
+    letter-spacing: 0.03em;
+    padding: 0.35rem 0.75rem;
+    border: 1px solid var(--color-line);
+    color: var(--color-carbon);
+  }
+
+  .feature-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 2.25rem;
+  }
+
+  .feature-link {
+    font-size: 0.875rem;
+    text-decoration: none;
+    color: var(--color-ink);
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 0.15rem;
+    transition: color 0.25s ease, opacity 0.25s ease;
+  }
+
+  .feature-link-primary {
+    color: var(--color-accent-strong);
+  }
+
+  .feature-link:hover:not([aria-disabled="true"]) {
+    color: var(--color-accent-strong);
+  }
+
+  .feature-link[aria-disabled="true"] {
+    pointer-events: none;
+    opacity: 0.4;
+  }
+</style>

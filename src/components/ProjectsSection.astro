@@ -1,0 +1,49 @@
+---
+import { projects } from "../data/projects";
+import ProjectFeature from "./ProjectFeature.astro";
+---
+
+<section id="proyectos" class="projects">
+  <div class="container-edit">
+    <header class="projects-header" data-reveal>
+      <p class="section-kicker">Proyectos seleccionados</p>
+      <h2 class="section-title">Trabajo reciente</h2>
+    </header>
+
+    <div class="projects-list">
+      {
+        projects.map((project, i) => (
+          <ProjectFeature project={project} index={i} reversed={i % 2 === 1} />
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .projects {
+    background-color: var(--color-paper);
+    padding-block: 6rem 2rem;
+  }
+
+  .projects-header {
+    max-width: 42rem;
+  }
+
+  .section-kicker {
+    font-size: 0.8125rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-accent-strong);
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 4.5vw, 3.25rem);
+    line-height: 1.05;
+  }
+
+  .projects-list {
+    margin-top: 3rem;
+  }
+</style>

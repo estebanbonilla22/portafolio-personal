@@ -1,0 +1,10 @@
+<svg width="640" height="800" viewBox="0 0 640 800" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Fotografía personal">
+  <rect width="640" height="800" fill="#ebe4d3"/>
+  <rect x="0.5" y="0.5" width="639" height="799" fill="none" stroke="#d9d1bd" stroke-width="1"/>
+  <circle cx="320" cy="400" r="213" fill="none" stroke="#d9d1bd" stroke-width="1"/>
+  <line x1="0" y1="0" x2="640" y2="800" stroke="#d9d1bd" stroke-width="1" opacity="0.5"/>
+  <line x1="640" y1="0" x2="0" y2="800" stroke="#d9d1bd" stroke-width="1" opacity="0.5"/>
+  <text x="40" y="64" font-family="Georgia, serif" font-style="italic" font-size="15" letter-spacing="2" fill="#545e4b">SOBRE MÍ</text>
+  <text x="40" y="704" font-family="Georgia, serif" font-size="34" fill="#131210">Fotografía personal</text>
+  <text x="40" y="744" font-family="Menlo, monospace" font-size="13" fill="#6b6656">Reemplazar por: perfil.jpg</text>
+</svg>

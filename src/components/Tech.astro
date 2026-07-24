@@ -1,0 +1,67 @@
+---
+import { technologies } from "../data/site";
+---
+
+<section id="tecnologias" class="tech">
+  <div class="container-edit">
+    <p class="section-kicker" data-reveal>Tecnologías</p>
+    <h2 class="tech-title" data-reveal>Con qué trabajo</h2>
+
+    <ul class="tech-list" data-reveal>
+      {technologies.map((tech) => <li>{tech}</li>)}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .tech {
+    background-color: var(--color-paper);
+    padding-block: 4rem 6rem;
+  }
+
+  .section-kicker {
+    font-size: 0.8125rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-accent-strong);
+    margin-bottom: 1rem;
+  }
+
+  .tech-title {
+    font-size: clamp(1.75rem, 3.6vw, 2.5rem);
+    margin-bottom: 2.5rem;
+  }
+
+  .tech-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    list-style: none;
+    border-top: 1px solid var(--color-line);
+    border-left: 1px solid var(--color-line);
+  }
+
+  @media (min-width: 40rem) {
+    .tech-list {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .tech-list {
+      grid-template-columns: repeat(6, 1fr);
+    }
+  }
+
+  .tech-list li {
+    padding: 1.5rem 1.25rem;
+    font-size: 0.9375rem;
+    border-right: 1px solid var(--color-line);
+    border-bottom: 1px solid var(--color-line);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .tech-list li:hover {
+    background-color: var(--color-ink);
+    color: var(--color-paper);
+  }
+</style>

@@ -1,0 +1,255 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import { projects } from "../../data/projects";
+
+export function getStaticPaths() {
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const hasDemo = Boolean(project.links.demo);
+const hasCode = Boolean(project.links.code);
+---
+
+<Layout
+  title={`${project.name} — Portafolio`}
+  description={project.summary}
+>
+  <Header />
+
+  <main id="contenido">
+    <article class="case">
+      <header class="case-header container-edit">
+        <a href="/#proyectos" class="case-back">← Volver a proyectos</a>
+
+        <p class="case-type">{project.type} — {project.year}</p>
+        <h1 class="case-title">{project.name}</h1>
+        <p class="case-summary">{project.summary}</p>
+
+        <ul class="case-tags">
+          {project.technologies.map((tech) => <li>{tech}</li>)}
+        </ul>
+
+        <div class="case-actions">
+          <a
+            href={hasDemo ? project.links.demo : undefined}
+            class="btn btn-dark"
+            aria-disabled={!hasDemo}
+            target={hasDemo ? "_blank" : undefined}
+            rel={hasDemo ? "noopener noreferrer" : undefined}
+            title={hasDemo ? undefined : "Enlace disponible próximamente"}
+          >
+            Ver proyecto <span aria-hidden="true">↗</span>
+          </a>
+          <a
+            href={hasCode ? project.links.code : undefined}
+            class="btn btn-outline"
+            aria-disabled={!hasCode}
+            target={hasCode ? "_blank" : undefined}
+            rel={hasCode ? "noopener noreferrer" : undefined}
+            title={hasCode ? undefined : "Enlace disponible próximamente"}
+          >
+            Ver código <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </header>
+
+      <figure class="case-cover container-edit">
+        <img
+          src={project.cover}
+          alt={`Vista principal del proyecto ${project.name}`}
+          loading="eager"
+          width="1600"
+          height="1000"
+        />
+      </figure>
+
+      <div class="case-body container-edit">
+        <section class="case-block">
+          <h2>El problema</h2>
+          <p>{project.problem}</p>
+        </section>
+        <section class="case-block">
+          <h2>La solución</h2>
+          <p>{project.solution}</p>
+        </section>
+      </div>
+
+      {
+        project.gallery.length > 0 && (
+          <div class="case-gallery container-edit">
+            {project.gallery.map((src, i) => (
+              <img
+                src={src}
+                alt={`Mockup ${i + 1} del proyecto ${project.name}`}
+                loading="lazy"
+                decoding="async"
+                width="1200"
+                height="900"
+              />
+            ))}
+          </div>
+        )
+      }
+    </article>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .case {
+    padding-top: 9rem;
+  }
+
+  .case-back {
+    display: inline-block;
+    font-size: 0.875rem;
+    color: var(--color-carbon);
+    text-decoration: none;
+    margin-bottom: 3rem;
+  }
+
+  .case-back:hover {
+    color: var(--color-accent-strong);
+  }
+
+  .case-type {
+    font-size: 0.8125rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-accent-strong);
+    margin-bottom: 1rem;
+  }
+
+  .case-title {
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    line-height: 1;
+    max-width: 18ch;
+  }
+
+  .case-summary {
+    margin-top: 1.5rem;
+    max-width: 48ch;
+    font-size: 1.125rem;
+    color: var(--color-carbon);
+    line-height: 1.6;
+  }
+
+  .case-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    list-style: none;
+    margin-top: 2rem;
+  }
+
+  .case-tags li {
+    font-size: 0.75rem;
+    padding: 0.35rem 0.75rem;
+    border: 1px solid var(--color-line);
+    color: var(--color-carbon);
+  }
+
+  .case-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2.5rem;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    text-decoration: none;
+    padding: 0.9rem 1.75rem;
+    border: 1px solid var(--color-ink);
+    transition: background-color 0.3s ease, color 0.3s ease, opacity 0.3s ease;
+  }
+
+  .btn-dark {
+    background-color: var(--color-ink);
+    color: var(--color-paper);
+  }
+
+  .btn-dark:hover:not([aria-disabled="true"]) {
+    background-color: transparent;
+    color: var(--color-ink);
+  }
+
+  .btn-outline {
+    color: var(--color-ink);
+  }
+
+  .btn-outline:hover:not([aria-disabled="true"]) {
+    background-color: var(--color-ink);
+    color: var(--color-paper);
+  }
+
+  .btn[aria-disabled="true"] {
+    pointer-events: none;
+    opacity: 0.35;
+  }
+
+  .case-cover {
+    margin-top: 4.5rem;
+  }
+
+  .case-cover img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    border: 1px solid var(--color-line);
+  }
+
+  .case-body {
+    display: grid;
+    gap: 3rem;
+    margin-top: 4.5rem;
+  }
+
+  @media (min-width: 48rem) {
+    .case-body {
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+  }
+
+  .case-block h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .case-block p {
+    color: var(--color-carbon);
+    line-height: 1.7;
+    max-width: 42ch;
+  }
+
+  .case-gallery {
+    margin-top: 5rem;
+    margin-bottom: 6rem;
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 48rem) {
+    .case-gallery {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .case-gallery img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border: 1px solid var(--color-line);
+  }
+</style>

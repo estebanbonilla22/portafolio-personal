@@ -1,0 +1,139 @@
+---
+import { site } from "../data/site";
+---
+
+<section id="sobre-mi" class="about">
+  <div class="container-edit about-grid">
+    <div class="about-photo" data-reveal>
+      <img
+        src={site.aboutPhoto}
+        alt={`Fotografía de ${site.name}`}
+        loading="lazy"
+        decoding="async"
+        width="640"
+        height="800"
+      />
+    </div>
+
+    <div class="about-copy">
+      <p class="section-kicker" data-reveal>Sobre mí</p>
+      <h2 class="about-title" data-reveal>
+        Desarrollo con criterio técnico y sensibilidad visual.
+      </h2>
+
+      <div class="about-text" data-reveal>
+        {site.aboutText.map((paragraph) => <p>{paragraph}</p>)}
+      </div>
+
+      <div class="about-education" data-reveal>
+        <p class="about-education-label">Formación</p>
+        <ul>
+          {
+            site.education.map((edu) => (
+              <li>
+                <span class="edu-title">{edu.title}</span>
+                <span class="edu-meta">
+                  {edu.institution} · {edu.period}
+                </span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    background-color: var(--color-paper);
+    padding-block: 6rem;
+  }
+
+  .about-grid {
+    display: grid;
+    gap: 3.5rem;
+  }
+
+  @media (min-width: 64rem) {
+    .about-grid {
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 5rem;
+      align-items: start;
+    }
+  }
+
+  .about-photo {
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    background-color: var(--color-paper-dim);
+    border: 1px solid var(--color-line);
+  }
+
+  .about-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .section-kicker {
+    font-size: 0.8125rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-accent-strong);
+    margin-bottom: 1rem;
+  }
+
+  .about-title {
+    font-size: clamp(1.75rem, 3.6vw, 2.5rem);
+    max-width: 22ch;
+    line-height: 1.15;
+  }
+
+  .about-text {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    max-width: 52ch;
+  }
+
+  .about-text p {
+    color: var(--color-carbon);
+    line-height: 1.7;
+  }
+
+  .about-education {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-line);
+  }
+
+  .about-education-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-carbon);
+    margin-bottom: 1rem;
+  }
+
+  .about-education ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .edu-title {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+  }
+
+  .edu-meta {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--color-carbon);
+    margin-top: 0.15rem;
+  }
+</style>

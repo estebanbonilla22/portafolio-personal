@@ -7,6 +7,7 @@ node_modules/
 
 # local node runtime (portable install, not part of the project)
 .node-tools/
+.gh-tools/
 
 # logs
 npm-debug.log*

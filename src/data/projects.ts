@@ -26,52 +26,65 @@ export interface Project {
 export const projects: Project[] = [
   {
     slug: "proyecto-01",
-    name: "[NOMBRE DEL PROYECTO 1]",
-    type: "Proyecto universitario",
+    name: "Bonga Shop",
+    type: "Marketplace académico",
     year: "2025",
     summary:
-      "Describe en una frase de qué trata el proyecto y a quién está dirigido.",
+      "Marketplace de vapeadores desechables con catálogo, carrito, pedidos, inventario, panel administrativo y recomendaciones mediante inteligencia artificial local.",
     problem:
-      "Explica aquí el problema real que motivó el proyecto: qué situación, proceso o necesidad no estaba bien resuelta antes de este trabajo.",
+      "La venta y administración de un catálogo con múltiples marcas y variantes exige mantener sincronizados el inventario, los pedidos y la experiencia de compra. El proyecto debía resolver ese flujo completo y, al mismo tiempo, separar con claridad las funciones del cliente y del administrador.",
     solution:
-      "Describe la solución que desarrollaste: cómo funciona, qué decisiones tomaste y por qué resuelve el problema planteado.",
-    technologies: ["Laravel", "MySQL", "Tailwind CSS", "JavaScript"],
-    // Reemplaza estos archivos en /public/images/projects/proyecto-01/
-    // (mismo nombre; cambia la extensión aquí si no usas .jpg)
-    cover: "/images/projects/proyecto-01/cover.svg",
+      "Desarrollamos una aplicación web con autenticación JWT y roles de cliente y administrador. Incluye catálogo y variantes, favoritos, carrito persistente, checkout, historial de pedidos, control de stock, exportación de movimientos e integración con Ollama para generar recomendaciones de compra y apoyo operativo.",
+    technologies: [
+      "Angular 19",
+      "TypeScript",
+      "Spring Boot",
+      "Java 17",
+      "PostgreSQL",
+      "Docker",
+      "Ollama",
+    ],
+    cover: "/images/projects/proyecto-01/bonga-home.webp",
     gallery: [
-      "/images/projects/proyecto-01/01.svg",
-      "/images/projects/proyecto-01/02.svg",
-      "/images/projects/proyecto-01/03.svg",
+      "/images/projects/proyecto-01/bonga-login.webp",
+      "/images/projects/proyecto-01/bonga-marketplace.webp",
+      "/images/projects/proyecto-01/bonga-admin.webp",
     ],
     links: {
       demo: "",
-      code: "",
+      code: "https://github.com/SantiagoLeyton/BONGA-SHOP",
     },
   },
   {
     slug: "proyecto-02",
-    name: "[NOMBRE DEL PROYECTO 2]",
-    type: "Proyecto universitario",
-    year: "2025",
+    name: "Ágora — Simulador Psicosocial",
+    type: "Proyecto nuclear universitario",
+    year: "2026",
     summary:
-      "Describe en una frase de qué trata el proyecto y a quién está dirigido.",
+      "Plataforma de simulación clínica interactiva para que estudiantes de psicología practiquen casos psicosociales y reciban evaluación y retroalimentación estructurada.",
     problem:
-      "Explica aquí el problema real que motivó el proyecto: qué situación, proceso o necesidad no estaba bien resuelta antes de este trabajo.",
+      "La práctica clínica supervisada en psicología es costosa, difícil de escalar y compleja de evaluar con criterios homogéneos. Los docentes necesitan crear actividades trazables y los estudiantes requieren un entorno seguro donde puedan practicar decisiones clínicas antes de enfrentarse a escenarios reales.",
     solution:
-      "Describe la solución que desarrollaste: cómo funciona, qué decisiones tomaste y por qué resuelve el problema planteado.",
-    technologies: ["Astro", "TypeScript", "MySQL"],
-    // Reemplaza estos archivos en /public/images/projects/proyecto-02/
-    // (mismo nombre; cambia la extensión aquí si no usas .jpg)
-    cover: "/images/projects/proyecto-02/cover.svg",
+      "Construimos una plataforma por roles donde el docente diseña casos, escenas, preguntas y resultados de aprendizaje, y programa actividades para grupos. El estudiante recorre simulaciones con decisiones ramificadas y estados emocionales dinámicos; al terminar, recibe una nota de 0 a 5, feedback, métricas de aprendizaje y una síntesis pedagógica asistida por IA.",
+    technologies: [
+      "Next.js 16",
+      "React 19",
+      "TypeScript",
+      "Spring Boot",
+      "Java 21",
+      "PostgreSQL",
+      "Tailwind CSS",
+      "Ollama",
+    ],
+    cover: "/images/projects/proyecto-02/agora-home.webp",
     gallery: [
-      "/images/projects/proyecto-02/01.svg",
-      "/images/projects/proyecto-02/02.svg",
-      "/images/projects/proyecto-02/03.svg",
+      "/images/projects/proyecto-02/agora-login.webp",
+      "/images/projects/proyecto-02/agora-simulation.webp",
+      "/images/projects/proyecto-02/agora-admin.webp",
     ],
     links: {
       demo: "",
-      code: "",
+      code: "https://github.com/SantiagoLeyton/Agora",
     },
   },
 ];

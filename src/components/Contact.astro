@@ -5,7 +5,7 @@ const links = [
   { label: "GitHub", href: site.contact.github },
   { label: "LinkedIn", href: site.contact.linkedin },
   { label: "WhatsApp", href: site.contact.whatsapp },
-];
+].filter((link) => Boolean(link.href));
 ---
 
 <section id="contacto" class="contact">
@@ -17,6 +17,9 @@ const links = [
 
     <a href={`mailto:${site.contact.email}`} class="contact-email" data-reveal>
       {site.contact.email}
+    </a>
+    <a href={site.contact.whatsapp} class="contact-phone" data-reveal target="_blank" rel="noopener noreferrer">
+      {site.contact.phone}
     </a>
 
     <div class="contact-row" data-reveal>
@@ -73,6 +76,18 @@ const links = [
 
   .contact-email:hover {
     border-color: var(--color-accent-strong);
+  }
+
+  .contact-phone {
+    display: block;
+    width: fit-content;
+    margin-top: 0.75rem;
+    color: var(--color-carbon);
+    text-decoration: none;
+  }
+
+  .contact-phone:hover {
+    color: var(--color-accent-strong);
   }
 
   .contact-row {

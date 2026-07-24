@@ -4,40 +4,41 @@
 // ─────────────────────────────────────────────────────────────
 
 export const site = {
-  name: "[TU NOMBRE]",
-  role: "Desarrollador de software",
-  location: "Colombia",
+  name: "Esteban Bonilla Giraldo",
+  role: "Estudiante de Ingeniería de Software",
+  location: "Armenia, Quindío",
 
   // Frase corta que acompaña el nombre en el hero.
-  tagline: "Construyo productos web claros, sólidos y cuidados en el detalle.",
+  tagline: "Construyo productos web claros, funcionales y cuidados en el detalle.",
 
   // Presentación breve del hero (2-3 líneas). Directa, sin exagerar experiencia.
   heroDescription:
-    "Diseño y desarrollo interfaces web funcionales, desde la lógica del backend hasta el detalle visual final. Actualmente enfocado en proyectos universitarios que resuelven problemas reales.",
+    "Soy estudiante de cuarto semestre y desarrollo aplicaciones web de principio a fin, desde la lógica del backend y los datos hasta una interfaz clara y funcional.",
 
   // Texto más largo para la sección "Sobre mí".
   aboutText: [
-    "Soy desarrollador de software enfocado en crear productos web funcionales, claros y visualmente cuidados. Me interesa combinar una estructura técnica sólida con experiencias digitales que sean fáciles de utilizar.",
-    "Disfruto el proceso completo: entender el problema, definir la solución, construir el backend y cuidar cada detalle de la interfaz. Me interesa especialmente el diseño de producto, la experiencia de usuario y cómo la tecnología puede resolver problemas concretos.",
+    "Tengo 18 años y curso cuarto semestre de Ingeniería de Software en la Corporación Universitaria Empresarial Alexander von Humboldt, en Armenia, Quindío. Me enfoco en crear aplicaciones web completas, claras y visualmente cuidadas.",
+    "He trabajado en proyectos académicos con frontend, backend, bases de datos, autenticación, roles, contenedores e integración de inteligencia artificial. Disfruto entender el problema, diseñar una solución útil y convertirla en una experiencia fácil de usar.",
   ],
 
   // Foto opcional para "Sobre mí". Reemplaza el archivo en /public/images/about/perfil.jpg
   // (guarda tu foto real con ese nombre y cambia la extensión aquí si no usas .jpg).
-  aboutPhoto: "/images/about/perfil.svg",
+  aboutPhoto: "/images/about/esteban-bonilla.png",
 
   education: [
     {
-      title: "[Título / carrera]",
-      institution: "[Nombre de la institución]",
-      period: "[Año de inicio] — [Año de fin / en curso]",
+      title: "Ingeniería de Software — cuarto semestre",
+      institution: "Corporación Universitaria Empresarial Alexander von Humboldt",
+      period: "En curso",
     },
   ],
 
   contact: {
-    email: "tucorreo@ejemplo.com",
-    github: "https://github.com/tu-usuario",
-    linkedin: "https://linkedin.com/in/tu-usuario",
-    whatsapp: "https://wa.me/57XXXXXXXXXX",
+    email: "bonikrr9@gmail.com",
+    phone: "+57 310 545 9660",
+    github: "https://github.com/estebanbonilla22",
+    linkedin: "",
+    whatsapp: "https://wa.me/573105459660",
     resumeUrl: "", // Enlace a tu CV en PDF, cuando lo tengas.
   },
 
@@ -70,7 +71,7 @@ export const technologies = [
 export const seo = {
   titleDefault: `${site.name} — ${site.role}`,
   description:
-    "Portafolio de desarrollador de software: proyectos, tecnologías y contacto.",
+    "Portafolio de Esteban Bonilla Giraldo, estudiante de Ingeniería de Software en Armenia, Quindío.",
   // Reemplaza /public/images/og-cover.jpg por tu propia imagen (1200×630) y actualiza esta ruta.
   ogImage: "/images/og-cover.svg",
 } as const;
